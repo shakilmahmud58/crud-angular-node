@@ -28,7 +28,7 @@
                 <span *ngIf="show!=student._id">{{student.home}}</span>
                 <input *ngIf="show==student._id" class="form-control" type="text" name="home" id="home" [(ngModel)]="home"/>
             </div>
-            <div class="col-2">
+            <div class="col-2" *ngIf="loggedUser">
                 <button *ngIf="show!=student._id" class="btn btn-warning m-1" (click)="showModal(student,num)">Edit</button>
                 <button *ngIf="show==student._id" class="btn btn-secondary m-1" (click)="cancelit(student)">Cancel</button>
                 <button *ngIf="show!=student._id" class="btn btn-danger m-1" (click)="deleteit(student,num)">Delete</button>

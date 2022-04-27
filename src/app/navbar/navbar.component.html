@@ -1,0 +1,7 @@
+<div>
+    <a class="mx-3" routerLink="/home" routerLinkActive="bg-warning" >Home</a>
+    <a class="mx-3" routerLink="myfile" routerLinkActive="bg-warning" *ngIf="islog">Add Student</a>
+    <a class="mx-3" routerLink="secondone" routerLinkActive="bg-warning">Student List</a>
+    <a class="mx-3" routerLink="signup" routerLinkActive="bg-warning" *ngIf="!islog">Sign Up</a>
+    <button class="btn btn-danger" (click)="deleteToken()" *ngIf="islog">Log out</button>
+  </div>

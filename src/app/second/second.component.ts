@@ -1,4 +1,5 @@
 import { AfterContentChecked, AfterViewChecked, Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { FirstService } from '../first.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { FirstService } from '../first.service';
 })
 export class SecondComponent implements OnInit, AfterViewChecked, AfterContentChecked, OnDestroy {
  
-  constructor(private service: FirstService) { }
+  constructor(private service: FirstService, private auth:AuthService) { }
   data:any;
   show:any;
   num:any;
@@ -38,10 +39,17 @@ export class SecondComponent implements OnInit, AfterViewChecked, AfterContentCh
       roll:this.roll,
       home:this.home
     }
-    this.service.editUser(datas).subscribe(res=>{
-      
-      this.data[this.num]=res;
-      this.show=null;
+    this.service.editUser(datas).subscribe((res:any)=>{
+      if(res.status==false)
+      {
+        alert("You are not allowed here");
+      }
+      else
+      {
+        this.data[this.num]=res;
+        this.show=null;
+      }
+
       //console.log(this.data);
     }) 
   }
@@ -51,7 +59,7 @@ export class SecondComponent implements OnInit, AfterViewChecked, AfterContentCh
       this.data=res;
       //console.log(res);
     })
-    
+    this.isLoggedIn();
   }
   ngOnDestroy(): void {
     //this.checkit()
@@ -64,14 +72,27 @@ export class SecondComponent implements OnInit, AfterViewChecked, AfterContentCh
 
   }
   deleteit(student:any,num:number): void{
-    this.service.deleteUser(student._id).subscribe(res=>{
-      this.data=this.data.filter((x:any)=>{
-        return x !== student
-      });
+    this.service.deleteUser(student._id).subscribe((res:any)=>{
+      if(res.status==false)
+      {
+        alert("your are not allowed here");
+      }
+      else
+      {
+        this.data=this.data.filter((x:any)=>{
+          return x !== student
+        });
+      }
+
       //console.log(res);
     })
   }
-  
+  loggedUser:boolean=false;
+  isLoggedIn(){
+      this.auth.isLoggedIn().subscribe((res:any)=>{
+        this.loggedUser=res.status;
+      });
+  }
 
 
 }

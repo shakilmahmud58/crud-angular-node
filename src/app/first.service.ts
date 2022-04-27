@@ -11,10 +11,10 @@ export class FirstService {
   constructor(private http:HttpClient) { }
 
   getdata(){
-      return this.http.get('http://localhost:5000/students');
+      return this.http.get('https://node-angular-server-58.herokuapp.com/students');
   }
   addUser(data:any){
-      return this.http.post('http://localhost:5000/adduser',data);
+      return this.http.post('https://node-angular-server-58.herokuapp.com/adduser',data);
   }
   // addUser2(data:any){
   //   axios.post('http://localhost:5000/adduser',data).then(res=>{
@@ -22,10 +22,10 @@ export class FirstService {
   //   });    
   // }
   deleteUser(id:any){
-    return this.http.post('http://localhost:5000/deleteUser',{id:id});
+    return this.http.post('https://node-angular-server-58.herokuapp.com/deleteUser',{id:id});
   }
   editUser(data:any){
-    return this.http.post('http://localhost:5000/editUser',data);
+    return this.http.post('https://node-angular-server-58.herokuapp.com/editUser',data);
   }
 
 }

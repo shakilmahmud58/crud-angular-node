@@ -1,27 +1,26 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, OnInit } from '@angular/core';
-import { FirstService } from './first.service';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit, AfterContentChecked, AfterViewChecked, AfterContentInit, AfterViewInit{
-  // title = 'angular_project';
-  // value ="I am a value";
-  constructor(private service: FirstService) { }
 
-  ngOnInit(): void {
-
-
+  token:any;
+  setToken(){
+    this.token=localStorage.getItem('token');
   }
-  
-  // reslt:any;
-  // changevalue(){
-  //   this.reslt=!this.reslt;
-  // }
-  ngAfterContentChecked(): void {
 
-      //console.log("app");
+
+  constructor(private auth: AuthService, private router: Router) { }
+  ngOnInit(): void {
+  }
+
+  ngAfterContentChecked(): void {
+    this.setToken();
+      
   }
   ngAfterContentInit(): void {
     //console.log('called app1');

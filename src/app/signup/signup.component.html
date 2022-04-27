@@ -1,0 +1,27 @@
+<div class="container" *ngIf="!logInForm">
+    <div class="row">
+        <form class="col-5">
+            <label for="name" class="form-lebel">Name</label>
+            <input class="form-control" type="text" name="name" id="name" [(ngModel)]="name" required/>
+            <label for="roll" class="form-lebel">Email</label>
+            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="email" required/>
+            <label for="home" class="form-lebel">Password</label>
+            <input class="form-control" type="password" name="pass" id="pass" [(ngModel)]="password" required/>
+            <button type="submit" class="btn btn-primary my-2" (click)="signUp()">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<div class="container" *ngIf="logInForm">
+    <div class="row">
+        <form class="col-5">
+            <label for="name" class="form-lebel">Email</label>
+            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="email" required/>
+            <label for="home" class="form-lebel">Password</label>
+            <input class="form-control" type="password" name="pass" id="pass" [(ngModel)]="password" required/>
+            <button type="submit" class="btn btn-primary my-2" (click)="logIn()">Login</button>
+        </form>
+    </div>
+</div>
+
+<button class="btn btn-danger" (click)="switch()">Switch Login and signUp Form</button>
