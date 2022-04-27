@@ -30,9 +30,12 @@ export class SignupComponent implements OnInit {
       pass:this.password
     }
     this.auth.signUp(newUser).subscribe((res:any)=>{
+      this.name='';
+      this.email='';
+      this.password='';
       if(res.status==1)
       {
-        alert("sucessfully registered")
+        alert("sucessfully registered, You have to log in now with your credentials");
       }
       else
       {

@@ -8,6 +8,7 @@
             <label for="home" class="form-lebel">Password</label>
             <input class="form-control" type="password" name="pass" id="pass" [(ngModel)]="password" required/>
             <button type="submit" class="btn btn-primary my-2" (click)="signUp()">Sign Up</button>
+            <button class="btn btn-secondary my-2 mx-2 cursor-pointer" (click)="switch()">Already Registered</button>
         </form>
     </div>
 </div>
@@ -20,8 +21,7 @@
             <label for="home" class="form-lebel">Password</label>
             <input class="form-control" type="password" name="pass" id="pass" [(ngModel)]="password" required/>
             <button type="submit" class="btn btn-primary my-2" (click)="logIn()">Login</button>
+            <button class="btn btn-secondary my-2 mx-2 cursor-pointer" (click)="switch()">Register Form</button>
         </form>
     </div>
 </div>
-
-<button class="btn btn-danger" (click)="switch()">Switch Login and signUp Form</button>
