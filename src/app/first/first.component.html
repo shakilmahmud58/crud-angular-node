@@ -8,14 +8,14 @@
 <body>
     <div class="container">
         <div class="row">
-            <form class="col-5">
+            <form class="col-5" ngNativeValidate (ngSubmit)="addStudent()">
                 <label for="name" class="form-lebel">Name</label>
                 <input class="form-control" type="text" name="name" id="name" [(ngModel)]="name" required/>
                 <label for="roll" class="form-lebel">ID number</label>
                 <input class="form-control" type="number" name="roll" id="roll" placeholder="roll" [(ngModel)]="roll" required/>
                 <label for="home" class="form-lebel">Home District</label>
                 <input class="form-control" type="text" name="home" id="home" [(ngModel)]="home" required/>
-                <button type="submit" class="btn btn-primary my-2" (click)="addStudent()">Add Student</button>
+                <button type="submit" class="btn btn-primary my-2">Add Student</button>
             </form>
         </div>
         <div *ngFor="let x of data">
